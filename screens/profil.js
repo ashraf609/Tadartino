@@ -18,6 +18,7 @@ import { Feather } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import Ico from "react-native-vector-icons/Entypo";
+import MaterialIconTextButtonsFooter from "../components/MaterialIconTextButtonsFooter";
 function Profil(props) {
   const [isFontLoaded, setFontLoaded] = useState(false);
   const [flipAnimation] = useState(new Animated.Value(0));
@@ -68,12 +69,19 @@ function Profil(props) {
   }
   return (
     <View style={styles.container}>
-      <View style={styles.rect1}></View>
+      <View style={styles.buttonRow}>
+        <View style={styles.rect10}></View>
+        <Image
+          source={require("../assets/rect.png")}
+          resizeMode="contain"
+          style={styles.imagens}
+        ></Image>
+      </View>
       <View style={styles.button2Row}>
-        <TouchableOpacity style={styles.button2}>
-          <Ico name="arrow-long-left" style={styles.icon4}></Ico>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.button1}>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate("SignUp")}
+          style={styles.button1}
+        >
           <FeatherIcon name="user" style={styles.icon1}></FeatherIcon>
         </TouchableOpacity>
       </View>
@@ -595,6 +603,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "white",
   },
+  materialIconTextButtonsFooter: {
+    height: 57,
+    width: 343,
+    borderRadius: 60,
+    marginLeft: 29,
+    top: -5,
+  },
   rect1: {
     width: 238,
     height: 136,
@@ -622,7 +637,7 @@ const styles = StyleSheet.create({
     borderWidth: 0,
     borderColor: "#000000",
     borderRadius: 100,
-    marginLeft: 256,
+    marginLeft: 310,
   },
   icon1: {
     color: "rgba(10,121,251,1)",
@@ -645,6 +660,29 @@ const styles = StyleSheet.create({
     width: 156,
     height: 144,
     position: "absolute",
+  },
+  imagens: {
+    top: 31,
+    left: 125,
+    width: 134,
+    height: 190,
+    position: "absolute",
+  },
+  buttonRow: {
+    height: 162,
+    flexDirection: "row",
+    marginTop: -100,
+    marginLeft: 10,
+    marginRight: 11,
+  },
+  rect10: {
+    top: 0,
+    width: 293,
+    height: 172,
+    position: "absolute",
+    backgroundColor: "#104d69",
+    borderRadius: 76,
+    left: 40,
   },
   images: {
     position: "absolute",

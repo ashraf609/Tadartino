@@ -1,5 +1,12 @@
 import React, { Component, useState, useEffect, useRef } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  Dimensions,
+} from "react-native";
 import FeatherIcon from "react-native-vector-icons/Feather";
 import EvilIconsIcon from "react-native-vector-icons/EvilIcons";
 import * as Font from "expo-font";
@@ -8,6 +15,10 @@ import { Feather } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import Swiper from "react-native-swiper";
+import MaterialButtonPrimary30 from "../components/MaterialButtonPrimary30";
+import MaterialButtonPrimary51 from "../components/MaterialButtonPrimary31";
+const windowWidth = Dimensions.get("window").width;
+const windowHeight = Dimensions.get("window").height;
 function Details(props) {
   const [isFontLoaded, setFontLoaded] = useState(false);
   const renderPagination = (index, total, context) => {
@@ -122,16 +133,29 @@ function Details(props) {
               ></Image>
             </Swiper>
           </View>
-          <TouchableOpacity style={styles.button1}>
-            <FeatherIcon name="user" style={styles.icon1}></FeatherIcon>
-          </TouchableOpacity>
-          <View style={styles.button2Stack}>
-            <TouchableOpacity style={styles.button2}></TouchableOpacity>
-            <EvilIconsIcon name="search" style={styles.icon2}></EvilIconsIcon>
-          </View>
         </View>
-        <View style={styles.rect2}></View>
+
+        <View style={styles.buttonRow}>
+          <View style={styles.rect10}></View>
+          <Image
+            source={require("../assets/rect.png")}
+            resizeMode="contain"
+            style={styles.imagens}
+          ></Image>
+        </View>
       </View>
+      <MaterialButtonPrimary30
+        style={{ width: 150, left: 10, top: -10, height: 50, borderRadius: 19 }}
+      ></MaterialButtonPrimary30>
+      <MaterialButtonPrimary51
+        style={{
+          width: 150,
+          left: 220,
+          top: -60,
+          height: 50,
+          borderRadius: 19,
+        }}
+      ></MaterialButtonPrimary51>
     </View>
   );
 }
@@ -140,12 +164,34 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-
+  imagens: {
+    top: 31,
+    left: 125,
+    width: 134,
+    height: 190,
+    position: "absolute",
+  },
+  buttonRow: {
+    height: windowHeight * 0.1,
+    flexDirection: "row",
+    marginTop: -15,
+    marginLeft: windowWidth * 0.0, // Responsive marginLeft for the buttonRow
+    marginRight: windowWidth * 0.04, // Responsive marginRight for the buttonRow
+  },
+  rect10: {
+    top: 0,
+    width: 293,
+    height: 172,
+    position: "absolute",
+    backgroundColor: "#104d69",
+    borderRadius: 76,
+    left: 40,
+  },
   rect1: {
-    top: 26,
-    left: -1,
-    width: 313,
-    height: 640,
+    top: 10,
+    left: windowWidth * 0,
+    width: windowWidth * 0.8,
+    height: windowHeight * 0.82,
     position: "absolute",
     backgroundColor: "rgba(255,255,255,1)",
     borderWidth: 0,
@@ -275,10 +321,10 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   rect1Stack: {
-    top: 44,
-    left: 34,
-    width: 313,
-    height: 641,
+    top: windowHeight * 0.03, // Responsive top for the rect1Stack
+    left: windowWidth * 0.1,
+    width: windowWidth * 0.8,
+    height: windowHeight * 0.8, // Responsive height for the rect1Stack
     position: "absolute",
   },
   button1: {
@@ -334,12 +380,12 @@ const styles = StyleSheet.create({
   },
   rect2: {
     top: 0,
-    width: 238,
-    height: 136,
+    width: windowWidth * 0.6,
+    height: windowHeight * 0.12, // Responsive height for the rect2
     position: "absolute",
     backgroundColor: "#104d69",
     borderRadius: 76,
-    left: 58,
+    left: windowWidth * 0.15,
   },
   rect1StackStackStack: {
     width: 353,
