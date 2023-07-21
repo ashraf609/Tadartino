@@ -1,45 +1,57 @@
+/* eslint-disable import/no-duplicates */
+/* eslint-disable spaced-comment */
+/* eslint-disable camelcase */
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from "remote-redux-devtools";
-
+import {
+  add_item_reducer,
+  delete_item_reducer,
+  get_all_items_reducer,
+  get_item_reducer,
+  get_latest_item_reducer,
+  get_liked_item_reducer,
+  get_user_items_reducer,
+  like_item_reducer,
+  search_item_reducer,
+  search_items_reducer,
+  update_item_reducer,
+} from "./state/Reducers/ItemReducer";
+import {
+  add_payement_reducer,
+  delete_payement_reducer,
+  get_all_payements_reducer,
+  get_payement_reducer,
+  update_payement_reducer,
+} from "./state/Reducers/PayementReducer";
+import {
+  add_request_reducer,
+  delete_request_reducer,
+  get_all_requests_reducer,
+  get_request_reducer,
+  update_request_reducer,
+} from "./state/Reducers/RequestReducer";
+import {
+  add_sub_reducer,
+  delete_sub_reducer,
+  get_all_subs_reducer,
+  get_sub_reducer,
+  update_sub_reducer,
+} from "./state/Reducers/SubReducer";
 import {
   delete_user_reducer,
   get_personal_info_reducer,
   get_users_reducer,
-  loginReducer,
-  registerReducer,
   update_user_reducer,
-} from "./State/Reducers/UserReducer";
-import {
-  add_metiers_reducer,
-  delete_metiers_reducer,
-  get_metier_users_reducer,
-  get_metiers_reducer,
-  get_single_metiers_reducer,
-  search_parent_metiers_reducer,
-  update_metiers_reducer,
-} from "./State/Reducers/MetierReducer";
-import {
-  add_message_reducer,
-  get_messages_reducer,
-  get_user_convos_reducer,
-} from "./State/Reducers/MessageReducer";
-import {
-  add_travaux_reducer,
-  delete_travaux_reducer,
-  get_travaux_reducer,
-  update_travaux_reducer,
-} from "./State/Reducers/TravauxReducer";
-import {
-  add_real_reducer,
-  delete_real_reducer,
-  get_reals_reducer,
-} from "./State/Reducers/RealisationsReducer";
+} from "./state/Reducers/UserReducer";
+import { registerReducer } from "./state/Reducers/UserReducer";
+import { loginReducer } from "./state/Reducers/UserReducer";
 
 const initialState = {
   user_info: {
-    user: {},
-  },
+    user:
+      JSON.parse(sessionStorage.getItem("user_info")) ||
+      JSON.parse(localStorage.getItem("user_info")),
+  } || { user: {} },
 };
 
 const reducer = combineReducers({
@@ -50,41 +62,41 @@ const reducer = combineReducers({
   get_users: get_users_reducer,
   update_user: update_user_reducer,
   delete_user: delete_user_reducer,
-
-  //metiers
-  get_metiers: get_metiers_reducer,
-  get_metier_users: get_metier_users_reducer,
-  get_single_metier: get_single_metiers_reducer,
-  search_parent: search_parent_metiers_reducer,
-  add_metier: add_metiers_reducer,
-  update_metier: update_metiers_reducer,
-  delete_metier: delete_metiers_reducer,
-
-  //travaux
-  get_travaux: get_travaux_reducer,
-  add_travaux: add_travaux_reducer,
-  update_travaux: update_travaux_reducer,
-  delete_travaux: delete_travaux_reducer,
-
-  //realisations
-  get_reals: get_reals_reducer,
-  add_real: add_real_reducer,
-  delete_real: delete_real_reducer,
-
-  //messages
-  get_messages: get_messages_reducer,
-  get_user_convos: get_user_convos_reducer,
-  add_message: add_message_reducer,
+  //items
+  get_all_items: get_all_items_reducer,
+  get_item: get_item_reducer,
+  get_user_items: get_user_items_reducer,
+  get_latest_item: get_latest_item_reducer,
+  search_item: search_item_reducer,
+  //to search for everything (included items )
+  search_items: search_items_reducer,
+  add_item: add_item_reducer,
+  like_item: like_item_reducer,
+  get_liked_items: get_liked_item_reducer,
+  update_item: update_item_reducer,
+  delete_item: delete_item_reducer,
+  //payements
+  get_all_payements: get_all_payements_reducer,
+  get_payement: get_payement_reducer,
+  add_payement: add_payement_reducer,
+  update_payement: update_payement_reducer,
+  delete_payement: delete_payement_reducer,
+  //requests
+  get_all_requests: get_all_requests_reducer,
+  get_request: get_request_reducer,
+  add_request: add_request_reducer,
+  update_request: update_request_reducer,
+  delete_request: delete_request_reducer,
+  //subs
+  get_all_subs: get_all_subs_reducer,
+  get_sub: get_sub_reducer,
+  add_sub: add_sub_reducer,
+  update_sub: update_sub_reducer,
+  delete_sub: delete_sub_reducer,
 });
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
-  reducer,
-  initialState,
-  //composeWithDevTools(applyMiddleware(thunk)),
-  composeEnhancers(applyMiddleware(thunk))
-  //window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));
 
 export default store;

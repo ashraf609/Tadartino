@@ -13,6 +13,9 @@
     "ios": "expo start --ios",
     "web": "expo start --web"
   },
+  "overrides": {
+    "react-devtools-core": "^4.28.0"
+  },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "@react-native-picker/picker": "^2.4.10",

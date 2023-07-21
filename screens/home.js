@@ -37,6 +37,7 @@ function Home(props) {
   useEffect(() => {
     loadFonts();
   }, []);
+
   const startFlippingAnimation = (index) => {
     setShowNumbers(true);
     setFlippedButtonIndex(index);
@@ -55,10 +56,12 @@ function Home(props) {
       }, 6000);
     });
   };
+
   const flipInterpolation = flipAnimation.interpolate({
     inputRange: [0, 0.5, 1],
     outputRange: ["0deg", "90deg", "360deg"],
   });
+
   if (!isFontLoaded) {
     return (
       <AppLoading
@@ -68,6 +71,7 @@ function Home(props) {
       />
     );
   }
+  
   return (
     <View style={styles.container}>
       <View style={styles.buttonRow}>
