@@ -18,6 +18,7 @@ import { Feather } from "@expo/vector-icons";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIconTextButtonsFooter from "../components/MaterialIconTextButtonsFooter";
+import { useDispatch, useSelector } from "react-redux";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 function Home(props) {
@@ -26,6 +27,8 @@ function Home(props) {
   const [showNumbers, setShowNumbers] = useState(false);
   const [showIcon, setShowIcon] = useState(true);
   const [flippedButtonIndex, setFlippedButtonIndex] = useState(null);
+  const get_all_items = useSelector((state) => state.get_all_items);
+  const dispatch = useDispatch();
   const loadFonts = async () => {
     await Font.loadAsync({
       // Use the actual font name here, and the path to the font file
@@ -71,7 +74,7 @@ function Home(props) {
       />
     );
   }
-  
+
   return (
     <View style={styles.container}>
       <View style={styles.buttonRow}>

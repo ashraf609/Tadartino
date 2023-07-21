@@ -48,10 +48,8 @@ import { loginReducer } from "./state/Reducers/UserReducer";
 
 const initialState = {
   user_info: {
-    user:
-      JSON.parse(sessionStorage.getItem("user_info")) ||
-      JSON.parse(localStorage.getItem("user_info")),
-  } || { user: {} },
+    user: { user: {} },
+  },
 };
 
 const reducer = combineReducers({
@@ -97,6 +95,10 @@ const reducer = combineReducers({
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(reducer, initialState, composeEnhancer(applyMiddleware(thunk)));
+const store = createStore(
+  reducer,
+  initialState,
+  composeEnhancer(applyMiddleware(thunk))
+);
 
 export default store;
