@@ -19,6 +19,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIconTextButtonsFooter from "../components/MaterialIconTextButtonsFooter";
 import { useDispatch, useSelector } from "react-redux";
+import { get_all_items_action } from "../state/Actions/ItemAction";
+import SingleItem from "../components/SingleItem";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 function Home(props) {
@@ -39,6 +41,11 @@ function Home(props) {
 
   useEffect(() => {
     loadFonts();
+  }, []);
+
+  //getting all items
+  useEffect(() => {
+    dispatch(get_all_items_action());
   }, []);
 
   const startFlippingAnimation = (index) => {
@@ -86,7 +93,7 @@ function Home(props) {
         ></Image>
       </View>
       <Swiper style={styles.wrapper} showsButtons loop={false}>
-        <View style={styles.rect2Stack}>
+        {/* <View style={styles.rect2Stack}>
           <View style={styles.rect2}>
             <Text style={styles.maison}>Maison</Text>
             <Text style={styles.maisonAvecJardin}>Maison avec jardin</Text>
@@ -178,38 +185,10 @@ function Home(props) {
               style={styles.materialButtonPrimary5}
             ></MaterialButtonPrimary5>
           </View>
-        </View>
-        <View style={styles.rect2Stack}>
-          <View style={styles.rect2}>
-            <Text style={styles.maison}>Maison</Text>
-            <Text style={styles.maisonAvecJardin}>Maison avec jardin</Text>
-            <View style={styles.button3Row}>
-              <Text
-                style={{
-                  left: 210,
-                  top: 40,
-                  fontSize: 20,
-
-                  color: "rgba(16,77,105,100)",
-                  fontFamily: "Hoefler",
-                  textDecorationLine: "underline",
-                }}
-                onPress={() => props.navigation.navigate("profil")}
-              >
-                Profil
-              </Text>
-            </View>
-            <Image
-              source={require("../assets/House-PNG-Picture.png")}
-              resizeMode="contain"
-              style={styles.image}
-            ></Image>
-            <MaterialButtonPrimary5
-              onPress={() => props.navigation.navigate("details")}
-              style={styles.materialButtonPrimary5}
-            ></MaterialButtonPrimary5>
-          </View>
-        </View>
+        </View> */}
+        {(get_all_items?.data || [])?.map((item, idx) => (
+          <SingleItem data={item} key={idx} />
+        ))}
       </Swiper>
       <MaterialIconTextButtonsFooter
         style={styles.materialIconTextButtonsFooter}
