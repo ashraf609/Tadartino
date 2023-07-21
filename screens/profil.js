@@ -594,9 +594,6 @@ function Profil(props) {
           </View>
         </View>
       </Swiper>
-      <MaterialIconTextButtonsFooter
-        style={styles.materialIconTextButtonsFooter}
-      ></MaterialIconTextButtonsFooter>
     </View>
   );
 }

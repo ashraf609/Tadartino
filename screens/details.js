@@ -145,13 +145,13 @@ function Details(props) {
         </View>
       </View>
       <MaterialButtonPrimary30
-        style={{ width: 150, left: 10, top: 10, height: 50, borderRadius: 19 }}
+        style={{ width: 150, left: 10, top: -10, height: 50, borderRadius: 19 }}
       ></MaterialButtonPrimary30>
       <MaterialButtonPrimary51
         style={{
           width: 150,
           left: 220,
-          top: -40,
+          top: -60,
           height: 50,
           borderRadius: 19,
         }}
@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
   buttonRow: {
     height: windowHeight * 0.1,
     flexDirection: "row",
-    marginTop: -5,
+    marginTop: -15,
     marginLeft: windowWidth * 0.0, // Responsive marginLeft for the buttonRow
     marginRight: windowWidth * 0.04, // Responsive marginRight for the buttonRow
   },
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     left: 40,
   },
   rect1: {
-    top: 26,
+    top: 10,
     left: windowWidth * 0,
     width: windowWidth * 0.8,
     height: windowHeight * 0.82,

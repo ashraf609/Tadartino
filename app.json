@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Immeuble",
-    "slug": "tadartinoappversionui",
+    "slug": "Immeuble",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -29,9 +29,8 @@
     },
     "extra": {
       "eas": {
-        "projectId": "0b1588c9-a5bf-4490-b1e8-11b225fb46a7"
+        "projectId": "c763bdd6-adcc-4208-8e0e-2e936788e9cd"
       }
-    },
-    "owner": "oussama-pixel"
+    }
   }
 }
