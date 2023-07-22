@@ -7,35 +7,35 @@ const windowHeight = Dimensions.get("window").height;
 export default function SingleItem({data}) {
   return (
     <View style={styles.rect2Stack}>
-    <View style={styles.rect2}>
-      <Text style={styles.maison}>Maison</Text>
-      <Text style={styles.maisonAvecJardin}>Maison avec jardin</Text>
-      <View style={styles.button3Row}>
-        <Text
-          style={{
-            left: 210,
-            top: 40,
-            fontSize: 20,
+      <View style={styles.rect2}>
+        <Text style={styles.maison}>Maison</Text>
+        <Text style={styles.maisonAvecJardin}>Maison avec jardin</Text>
+        <View style={styles.button3Row}>
+          <Text
+            style={{
+              left: 210,
+              top: 40,
+              fontSize: 20,
 
-            color: "rgba(16,77,105,100)",
-            fontFamily: "Hoefler",
-            textDecorationLine: "underline",
-          }}
-          onPress={() => props.navigation.navigate("profil")}
-        >
-          Profil
-        </Text>
+              color: "rgba(16,77,105,100)",
+              fontFamily: "Hoefler",
+              textDecorationLine: "underline",
+            }}
+            onPress={() => props.navigation.navigate("profil")}
+          >
+            Profil
+          </Text>
+        </View>
+        <Image
+          source={require("../assets/House-PNG-Picture.png")}
+          resizeMode="contain"
+          style={styles.image}
+        ></Image>
+        <MaterialButtonPrimary5
+          onPress={() => props.navigation.navigate("details")}
+          style={styles.materialButtonPrimary5}
+        ></MaterialButtonPrimary5>
       </View>
-      <Image
-        source={require("../assets/House-PNG-Picture.png")}
-        resizeMode="contain"
-        style={styles.image}
-      ></Image>
-      <MaterialButtonPrimary5
-        onPress={() => props.navigation.navigate("details")}
-        style={styles.materialButtonPrimary5}
-      ></MaterialButtonPrimary5>
-    </View>
   </View>
   )
 }
@@ -47,6 +47,13 @@ const styles = StyleSheet.create({
         height: windowHeight * 0.7, // Responsive height
         alignItems: "center",
         marginLeft: windowWidth * 0.1,
+    },
+    image: {
+      top: 20,
+      left: 15,
+      width: 284,
+      height: 312,
+      position: "absolute",
     },
     rect2: {
         top: -75,
