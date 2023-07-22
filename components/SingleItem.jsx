@@ -8,8 +8,8 @@ export default function SingleItem({data}) {
   return (
     <View style={styles.rect2Stack}>
       <View style={styles.rect2}>
-        <Text style={styles.maison}>Maison</Text>
-        <Text style={styles.maisonAvecJardin}>Maison avec jardin</Text>
+        <Text style={styles.maison}>{data.type}</Text>
+        <Text style={styles.maisonAvecJardin}>{data.title}</Text>
         <View style={styles.button3Row}>
           <Text
             style={{
@@ -27,7 +27,7 @@ export default function SingleItem({data}) {
           </Text>
         </View>
         <Image
-          source={require("../assets/House-PNG-Picture.png")}
+          source={{uri:`https://tadartino.ma/${data.image}`}}
           resizeMode="contain"
           style={styles.image}
         ></Image>
