@@ -1,5 +1,6 @@
-import { View, Text,StyleSheet,Dimensions} from 'react-native'
+import { View, Text,StyleSheet,Dimensions,Image} from 'react-native'
 import React from 'react'
+import MaterialButtonPrimary5 from './MaterialButtonPrimary5';
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
