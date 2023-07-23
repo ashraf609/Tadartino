@@ -19,17 +19,19 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import Icons from "react-native-vector-icons/MaterialCommunityIcons";
 import MaterialIconTextButtonsFooter from "../components/MaterialIconTextButtonsFooter";
 import { useDispatch, useSelector } from "react-redux";
-import { get_all_items_action } from "../State/Actions/ItemAction";
+import { get_all_items_action } from "../state/Actions/ItemAction";
 import SingleItem from "../components/SingleItem";
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 function Home(props) {
+  const get_all_items = useSelector((state) => state.get_all_items);
+
   const [isFontLoaded, setFontLoaded] = useState(false);
   const [flipAnimation] = useState(new Animated.Value(0));
   const [showNumbers, setShowNumbers] = useState(false);
   const [showIcon, setShowIcon] = useState(true);
+  const [data, setData] = useState([]);
   const [flippedButtonIndex, setFlippedButtonIndex] = useState(null);
-  const get_all_items = useSelector((state) => state.get_all_items);
   const dispatch = useDispatch();
   const loadFonts = async () => {
     await Font.loadAsync({
@@ -38,6 +40,14 @@ function Home(props) {
     });
     setFontLoaded(true);
   };
+
+  useEffect(() => {
+    setData(
+      [...new Set(get_all_items.data?.map((item) => item.item_id))]
+        .map((item) => get_all_items.data?.find((elt) => elt?.item_id === item))
+        ?.reverse()
+    );
+  }, [get_all_items.data]);
 
   useEffect(() => {
     loadFonts();
@@ -180,11 +190,14 @@ function Home(props) {
               resizeMode="contain"
               style={styles.image}
             ></Image>
-           
+            <MaterialButtonPrimary5
+              onPress={() => props.navigation.navigate("details")}
+              style={styles.materialButtonPrimary5}
+            ></MaterialButtonPrimary5>
           </View>
         </View> */}
-        {(get_all_items?.data || [])?.map((item, idx) => (
-          <SingleItem data={item} key={idx} />
+        {data?.map((item, idx) => (
+          <SingleItem data={item} key={idx} navigation={props.navigation} />
         ))}
       </Swiper>
       <MaterialIconTextButtonsFooter
@@ -209,7 +222,7 @@ const styles = StyleSheet.create({
     marginLeft: windowWidth * 0.05, // Responsive marginLeft
     bottom: -windowHeight * 0.03, // Responsive bottom
     position: "absolute",
-    top: 740,
+    top: 700,
   },
   rect2: {
     top: -75,
