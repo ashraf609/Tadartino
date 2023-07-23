@@ -43,9 +43,9 @@ function Home(props) {
 
   useEffect(() => {
     setData(
-      [...new Set(get_all_items.data?.map((item) => item.item_id))].map(
-        (item) => get_all_items.data?.find((elt) => elt?.item_id === item)
-      )
+      [...new Set(get_all_items.data?.map((item) => item.item_id))]
+        .map((item) => get_all_items.data?.find((elt) => elt?.item_id === item))
+        ?.reverse()
     );
   }, [get_all_items.data]);
 
