@@ -4,7 +4,7 @@ import MaterialButtonPrimary5 from './MaterialButtonPrimary5';
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
 
-export default function SingleItem({data}) {
+export default function SingleItem({data,navigation}) {
   return (
     <View style={styles.rect2Stack}>
       <View style={styles.rect2}>
@@ -21,7 +21,7 @@ export default function SingleItem({data}) {
               fontFamily: "Hoefler",
               textDecorationLine: "underline",
             }}
-            onPress={() => props.navigation.navigate("profil")}
+            onPress={() => navigation.navigate("profil")}
           >
             Profil
           </Text>
@@ -32,7 +32,7 @@ export default function SingleItem({data}) {
           style={styles.image}
         ></Image>
         <MaterialButtonPrimary5
-          onPress={() => props.navigation.navigate("details")}
+          onPress={() => navigation.navigate("details")}
           style={styles.materialButtonPrimary5}
         ></MaterialButtonPrimary5>
       </View>
