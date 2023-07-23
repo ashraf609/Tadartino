@@ -27,7 +27,7 @@ export default function SingleItem({data,navigation}) {
           </Text>
         </View>
         <Image
-          source={{uri:`https://tadartino.ma/${data.image}`}}
+          source={{uri:data.image}}
           resizeMode="contain"
           style={styles.image}
         ></Image>
