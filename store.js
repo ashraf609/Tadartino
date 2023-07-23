@@ -15,36 +15,36 @@ import {
   search_item_reducer,
   search_items_reducer,
   update_item_reducer,
-} from "./State/Reducers/ItemReducer";
+} from "./state/Reducers/ItemReducer";
 import {
   add_payement_reducer,
   delete_payement_reducer,
   get_all_payements_reducer,
   get_payement_reducer,
   update_payement_reducer,
-} from "./State/Reducers/PayementReducer";
+} from "./state/Reducers/PayementReducer";
 import {
   add_request_reducer,
   delete_request_reducer,
   get_all_requests_reducer,
   get_request_reducer,
   update_request_reducer,
-} from "./State/Reducers/RequestReducer";
+} from "./state/Reducers/RequestReducer";
 import {
   add_sub_reducer,
   delete_sub_reducer,
   get_all_subs_reducer,
   get_sub_reducer,
   update_sub_reducer,
-} from "./State/Reducers/SubReducer";
+} from "./state/Reducers/SubReducer";
 import {
   delete_user_reducer,
   get_personal_info_reducer,
   get_users_reducer,
   update_user_reducer,
-} from "./State/Reducers/UserReducer";
-import { registerReducer } from "./State/Reducers/UserReducer";
-import { loginReducer } from "./State/Reducers/UserReducer";
+} from "./state/Reducers/UserReducer";
+import { registerReducer } from "./state/Reducers/UserReducer";
+import { loginReducer } from "./state/Reducers/UserReducer";
 
 const initialState = {
   user_info: {
